@@ -22,6 +22,16 @@ const cardapio = [
         preco: 4.00,
         imagem: "https://images.unsplash.com/photo-1564419320461-6870880221ad?w=400&q=80",
       },
+      {
+        nome: "Limonada Suíça",
+        preco: 10.00,
+        imagem: "https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=400&q=80",
+      },
+      {
+        nome: "Chá Gelado de Pêssego",
+        preco: 7.00,
+        imagem: "https://images.unsplash.com/photo-1499638673689-79a0b5115d87?w=400&q=80",
+      },
     ],
   },
   {
@@ -42,6 +52,16 @@ const cardapio = [
         nome: "Skol Lata",
         preco: 7.00,
         imagem: "https://images.unsplash.com/photo-1532634922-8fe0b757fb13?w=400&q=80",
+      },
+      {
+        nome: "Corona Extra",
+        preco: 12.00,
+        imagem: "https://images.unsplash.com/photo-1535958636474-b021ee887b13?w=400&q=80",
+      },
+      {
+        nome: "Stella Artois Long Neck",
+        preco: 11.00,
+        imagem: "https://images.unsplash.com/photo-1566633806827-ff4af90f0d94?w=400&q=80",
       },
     ],
   },
@@ -64,6 +84,16 @@ const cardapio = [
         preco: 35.00,
         imagem: "https://images.unsplash.com/photo-1527477396000-e27163b481c2?w=400&q=80",
       },
+      {
+        nome: "Mandioca Frita",
+        preco: 22.00,
+        imagem: "https://images.unsplash.com/photo-1565299507177-b0ac66763828?w=400&q=80",
+      },
+      {
+        nome: "Isca de Peixe",
+        preco: 38.00,
+        imagem: "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?w=400&q=80",
+      },
     ],
   },
   {
@@ -84,6 +114,16 @@ const cardapio = [
         nome: "Gin Tônica",
         preco: 22.00,
         imagem: "https://images.unsplash.com/photo-1571950006419-5edc5029e06f?w=400&q=80",
+      },
+      {
+        nome: "Aperol Spritz",
+        preco: 25.00,
+        imagem: "https://images.unsplash.com/photo-1629233801568-2d6b8d0b3b0e?w=400&q=80",
+      },
+      {
+        nome: "Margarita",
+        preco: 23.00,
+        imagem: "https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=400&q=80",
       },
     ],
   },
