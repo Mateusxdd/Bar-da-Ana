@@ -46,7 +46,7 @@ const cardapio = [
       {
         nome: "Brahma Duplo Malte",
         preco: 8.00,
-        imagem: "https://images.unsplash.com/photo-1584225064536-6573a5021804?w=400&q=80",
+        imagem: "https://images.unsplash.com/photo-1567696153798-9111f9cd3d0d?w=400&q=80",
       },
       {
         nome: "Skol Lata",
@@ -61,7 +61,7 @@ const cardapio = [
       {
         nome: "Stella Artois Long Neck",
         preco: 11.00,
-        imagem: "https://images.unsplash.com/photo-1566633806827-ff4af90f0d94?w=400&q=80",
+        imagem: "https://images.unsplash.com/photo-1608270586620-248524c67de9?w=400&q=80",
       },
     ],
   },
@@ -113,12 +113,12 @@ const cardapio = [
       {
         nome: "Gin Tônica",
         preco: 22.00,
-        imagem: "https://images.unsplash.com/photo-1571950006419-5edc5029e06f?w=400&q=80",
+        imagem: "https://images.unsplash.com/photo-1470338745628-171cf53de3a8?w=400&q=80",
       },
       {
         nome: "Aperol Spritz",
         preco: 25.00,
-        imagem: "https://images.unsplash.com/photo-1629233801568-2d6b8d0b3b0e?w=400&q=80",
+        imagem: "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=400&q=80",
       },
       {
         nome: "Margarita",
