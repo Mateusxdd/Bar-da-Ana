@@ -1,0 +1,701 @@
+/* ─────────────────────────────────────────
+   RESET & TOKENS
+───────────────────────────────────────── */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --gold: #dbf305;
+    --gold-dim: rgba(219, 243, 5, 0.12);
+    --gold-glow: rgba(219, 243, 5, 0.35);
+    --bg: #0c0c0c;
+    --bg-card: #141414;
+    --bg-card-hover: #1a1a1a;
+    --border: rgba(255, 255, 255, 0.07);
+    --border-hover: rgba(219, 243, 5, 0.3);
+    --text: #f0ece4;
+    --text-muted: rgba(240, 236, 228, 0.45);
+    --serif: 'Playfair Display', Georgia, serif;
+    --sans: 'DM Sans', sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: var(--sans);
+    background: var(--bg);
+    color: var(--text);
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* ─────────────────────────────────────────
+   HEADER
+───────────────────────────────────────── */
+header {
+    background: rgba(12, 12, 12, 0.9);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    padding: 22px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid var(--border);
+}
+
+header h1 {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 400;
+    color: var(--gold);
+    font-size: 26px;
+    letter-spacing: 0.02em;
+}
+
+nav {
+    display: flex;
+    gap: 36px;
+}
+
+nav a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    transition: color 0.3s;
+    position: relative;
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--gold);
+    transition: width 0.3s ease;
+}
+
+nav a:hover {
+    color: var(--gold);
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+/* ─────────────────────────────────────────
+   BANNER
+───────────────────────────────────────── */
+.banner {
+    height: 100vh;
+    min-height: 600px;
+    background:
+        linear-gradient(160deg, rgba(0,0,0,0.75) 40%, rgba(0,0,0,0.5) 100%),
+        url('imagens/bar.png');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* giant watermark text */
+.banner__bg-text {
+    position: absolute;
+    bottom: -0.1em;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: var(--serif);
+    font-size: clamp(160px, 30vw, 320px);
+    font-weight: 700;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(219, 243, 5, 0.07);
+    letter-spacing: -0.04em;
+    pointer-events: none;
+    user-select: none;
+    line-height: 1;
+}
+
+.banner__content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+    animation: fadeUp 1s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.banner__eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    opacity: 0.8;
+}
+
+.banner h2 {
+    font-family: var(--serif);
+    font-size: clamp(44px, 7vw, 80px);
+    font-weight: 700;
+    line-height: 1.1;
+    color: var(--text);
+    letter-spacing: -0.02em;
+}
+
+.banner h2 em {
+    font-style: italic;
+    color: var(--gold);
+}
+
+.banner__scroll-hint {
+    position: absolute;
+    bottom: 36px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--text-muted);
+    font-size: 20px;
+    animation: bounce 2s ease-in-out infinite;
+}
+
+/* ─────────────────────────────────────────
+   SOBRE
+───────────────────────────────────────── */
+#sobre {
+    padding: 100px 10%;
+    display: flex;
+    justify-content: center;
+}
+
+.sobre__inner {
+    max-width: 680px;
+    width: 100%;
+}
+
+.sobre__label {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+    opacity: 0.7;
+}
+
+#sobre h2 {
+    font-family: var(--serif);
+    font-size: clamp(32px, 4vw, 48px);
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 20px;
+    line-height: 1.1;
+}
+
+#sobre p {
+    font-size: 17px;
+    color: var(--text-muted);
+    line-height: 1.8;
+    margin-bottom: 52px;
+}
+
+.sobre__stats {
+    display: flex;
+    gap: 0;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.stat {
+    flex: 1;
+    padding: 28px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    border-right: 1px solid var(--border);
+}
+
+.stat:last-child {
+    border-right: none;
+}
+
+.stat__num {
+    font-family: var(--serif);
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--gold);
+    line-height: 1;
+}
+
+.stat__desc {
+    font-size: 12px;
+    color: var(--text-muted);
+    letter-spacing: 0.04em;
+}
+
+/* ─────────────────────────────────────────
+   CARDÁPIO
+───────────────────────────────────────── */
+#cardapio {
+    padding: 80px 10%;
+}
+
+.section__header {
+    text-align: center;
+    margin-bottom: 52px;
+}
+
+.section__label {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    opacity: 0.7;
+    margin-bottom: 12px;
+}
+
+.section__header h2,
+#cardapio > .section__header h2,
+#contato > .section__header h2 {
+    font-family: var(--serif);
+    font-size: clamp(30px, 4vw, 46px);
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.1;
+}
+
+.cardapio__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.item {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    transition: transform 0.35s ease, border-color 0.35s ease, background 0.35s ease, box-shadow 0.35s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.item::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at top right, var(--gold-dim), transparent 65%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.item:hover::before {
+    opacity: 1;
+}
+
+.item:hover {
+    transform: translateY(-6px);
+    border-color: var(--border-hover);
+    background: var(--bg-card-hover);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 30px var(--gold-glow);
+}
+
+.item--destaque {
+    border-color: rgba(219, 243, 5, 0.2);
+}
+
+.item__tag {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold);
+    background: var(--gold-dim);
+    border: 1px solid rgba(219, 243, 5, 0.2);
+    padding: 4px 10px;
+    border-radius: 100px;
+    width: fit-content;
+}
+
+.item__body {
+    flex: 1;
+}
+
+.item__body h3 {
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 8px;
+    line-height: 1.2;
+}
+
+.item__body p {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.65;
+}
+
+.item__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+}
+
+.item__price {
+    font-family: var(--serif);
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--gold);
+}
+
+.item__cta {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--bg);
+    background: var(--gold);
+    padding: 8px 18px;
+    border-radius: 100px;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.item__cta:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 18px var(--gold-glow);
+}
+
+/* ─────────────────────────────────────────
+   CONTATO
+───────────────────────────────────────── */
+#contato {
+    padding: 80px 10%;
+    background: #0a0a0a;
+}
+
+.contato__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 18px;
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+.contato__card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 28px;
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    text-decoration: none;
+    color: var(--text);
+    transition: border-color 0.3s, background 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+
+.contato__card:hover {
+    border-color: var(--border-hover);
+    background: var(--bg-card-hover);
+    transform: translateY(-4px);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+}
+
+.contato__card--horario {
+    cursor: default;
+}
+
+.contato__card--horario:hover {
+    transform: none;
+}
+
+.contato__icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: var(--gold-dim);
+    border: 1px solid rgba(219, 243, 5, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gold);
+    flex-shrink: 0;
+}
+
+.contato__label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+}
+
+.contato__value {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--text);
+    line-height: 1.4;
+}
+
+.contato__sub {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-top: 2px;
+}
+
+.contato__arrow {
+    margin-left: auto;
+    color: var(--text-muted);
+    font-size: 18px;
+    align-self: center;
+    transition: transform 0.2s, color 0.2s;
+}
+
+.contato__card:hover .contato__arrow {
+    transform: translateX(4px);
+    color: var(--gold);
+}
+
+/* ─────────────────────────────────────────
+   BOTÃO GENÉRICO
+───────────────────────────────────────── */
+button,
+a.botao {
+    display: inline-block;
+    background: var(--gold);
+    color: #0c0c0c;
+    padding: 14px 32px;
+    border: none;
+    border-radius: 100px;
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform 0.25s, box-shadow 0.25s;
+}
+
+button:hover,
+a.botao:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 28px var(--gold-glow);
+}
+
+/* ─────────────────────────────────────────
+   FOOTER
+───────────────────────────────────────── */
+footer {
+    background: #050505;
+    border-top: 1px solid var(--border);
+    padding: 40px 60px;
+}
+
+.footer__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer__brand {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 20px;
+    color: var(--gold);
+    opacity: 0.7;
+}
+
+footer p {
+    font-size: 13px;
+    color: var(--text-muted);
+}
+
+/* ─────────────────────────────────────────
+   CARDÁPIO — FILTROS
+───────────────────────────────────────── */
+.cardapio__filtros {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 48px;
+    justify-content: center;
+}
+
+.filtro-btn {
+    background: transparent;
+    color: var(--text-muted);
+    border: 1px solid var(--border);
+    padding: 9px 20px;
+    border-radius: 100px;
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    cursor: pointer;
+    transition: all 0.25s;
+}
+
+.filtro-btn:hover {
+    border-color: var(--border-hover);
+    color: var(--text);
+    box-shadow: none;
+    transform: none;
+}
+
+.filtro-btn--ativo {
+    background: var(--gold);
+    color: #0c0c0c;
+    border-color: var(--gold);
+    font-weight: 600;
+}
+
+.filtro-btn--ativo:hover {
+    box-shadow: 0 0 20px var(--gold-glow);
+}
+
+/* ─────────────────────────────────────────
+   CARDÁPIO — SEÇÕES POR CATEGORIA
+───────────────────────────────────────── */
+.cardapio__secao {
+    margin-bottom: 52px;
+}
+
+.cardapio__cat-titulo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 20px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--border);
+}
+
+.cardapio__cat-emoji {
+    font-size: 20px;
+}
+
+/* ─────────────────────────────────────────
+   ITEM — IMAGEM
+───────────────────────────────────────── */
+.item__img-wrap {
+    width: 100%;
+    height: 180px;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #1a1a1a;
+    margin-bottom: 4px;
+}
+
+.item__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+    display: block;
+}
+
+.item:hover .item__img {
+    transform: scale(1.06);
+}
+
+/* ─────────────────────────────────────────
+   ANIMAÇÕES
+───────────────────────────────────────── */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(8px); }
+}
+
+/* ─────────────────────────────────────────
+   RESPONSIVO
+───────────────────────────────────────── */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        gap: 16px;
+        padding: 20px 24px;
+    }
+
+    nav {
+        gap: 24px;
+    }
+
+    #sobre {
+        padding: 72px 6%;
+    }
+
+    #cardapio,
+    #contato {
+        padding: 72px 6%;
+    }
+
+    .sobre__stats {
+        flex-direction: column;
+    }
+
+    .stat {
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+    }
+
+    .stat:last-child {
+        border-bottom: none;
+    }
+
+    .cardapio__grid {
+        grid-template-columns: 1fr;
+    }
+
+    .contato__grid {
+        grid-template-columns: 1fr;
+    }
+
+    footer {
+        padding: 32px 24px;
+    }
+
+    .footer__inner {
+        flex-direction: column;
+        gap: 8px;
+        text-align: center;
+    }
+}
